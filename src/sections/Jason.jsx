@@ -41,7 +41,7 @@ const Jason = () => {
       //     'linear-gradient(200deg, #F7B38F 0%, #E09067 8.61%, #BF704C 26%, #734934 43%, #3D271C 52%)',
       // }}
     >
-      <div className="max-w-lg jason-content">
+      <div className="max-w-3xl jason-content">
         <h1>The Journey in Every Pour</h1>
         <h2>Ode to origin and craft.</h2>
         <p>
@@ -52,17 +52,20 @@ const Jason = () => {
           They are passages—of story, soil, and soul.
         </p>
 
-        <div className="jason-2 w-full">
+        {/* <div className="jason-2 w-full">
           <img src="/images/bottle-2.png" />
-        </div>
+        </div> */}
       </div>
 
       <div className="space-y-5 mt-96 img-box">
-        <div className="jason-1">
+        {/* <div className="jason-1">
           <img src="/images/bottle-1.png" />
         </div>
         <div className="jason-3">
           <img src="/images/bottle-3.png" />
+        </div> */}
+        <div className="jason-2 w-full">
+          <img src="/images/bottle-2.png" />
         </div>
       </div>
     </section>

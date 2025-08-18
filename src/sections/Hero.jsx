@@ -113,7 +113,7 @@ const Hero = () => {
         />
       </div>
 
-      <ComingSoon />
+      {/* <ComingSoon /> */}
     </section>
   )
 }

@@ -29,7 +29,7 @@ const FirstVideo = () => {
         videoRef.current,
         {
           currentTime: videoRef.current.duration,
-          duration: 3,
+          duration: 6,
           ease: 'power1.inOut',
         },
         '<'
