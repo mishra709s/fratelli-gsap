@@ -237,7 +237,7 @@ main {
   }
 }
 
-/* .black-gradient-bg {
+.black-gradient-bg {
   background: linear-gradient(
     223.17deg,
     rgb(28, 24, 41) 0%,
@@ -248,18 +248,7 @@ main {
     rgb(18, 18, 24) 43.03%,
     rgb(17, 17, 23) 51.63%
   );
-} */
-
-/* main {
-  background: linear-gradient(
-    200deg,
-    #f7b38f 0%,
-    #e09067 8.61%,
-    #bf704c 26%,
-    #734934 43%,
-    #3d271c 52%
-  );
-} */
+}
 
 .entrance-message {
   mask-image: radial-gradient(circle at 50% 100vh, black 0%, transparent 0%);

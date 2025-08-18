@@ -1,69 +1,49 @@
+import { useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
-import { useMaskSettings } from '../../constants'
+// import { useMaskSettings } from '../../constants'
 // import ComingSoon from './ComingSoon'
 
 const Hero = () => {
-  const { initialMaskPos, initialMaskSize, maskPos, maskSize } =
-    useMaskSettings()
+  const [maskSettings, setMaskSettings] = useState({
+    initialMaskPos: '49.5% 3%',
+    initialMaskSize: '3000% 3000%',
+    maskPos: '49.5% 3%',
+    maskSize: '16% 12%',
+  })
 
-  // useGSAP(() => {
-  //   gsap.set('.mask-wrapper', {
-  //     maskPosition: initialMaskPos,
-  //     maskSize: initialMaskSize,
-  //   })
-
-  //   gsap.set('.mask-logo', { marginTop: '0vh', opacity: 0 })
-
-  //   gsap.set('.entrance-message', { marginTop: '0vh' })
-
-  //   const tl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: '.hero-section',
-  //       start: 'top top',
-  //       scrub: 2.5,
-  //       end: '+=200%',
-  //       pin: true,
-  //     },
-  //   })
-
-  //   tl.to('.fade-out', { opacity: 0, ease: 'power1.inOut' })
-  //     .to('.scale-out', { scale: 1, ease: 'power1.inOut' })
-  //     .to('.mask-wrapper', { maskSize, ease: 'power1.inOut' }, '<')
-  //     .to('.mask-wrapper', { maskPosition: maskPos, ease: 'power1.inOut' }, '>')
-  //     .to('.mask-wrapper', { opacity: 0 })
-  //   // .to(
-  //   //   '.overlay-logo',
-  //   //   {
-  //   //     opacity: 1,
-  //   //     onComplete: () => {
-  //   //       gsap.to('.overlay-logo', { opacity: 0 })
-  //   //     },
-  //   //   },
-  //   //   '<'
-  //   // )
-  //   // .to(
-  //   //   '.entrance-message',
-  //   //   {
-  //   //     duration: 1,
-  //   //     ease: 'power1.inOut',
-  //   //     maskImage:
-  //   //       'radial-gradient(circle at 50% 0vh, black 50%, transparent 100%)',
-  //   //   },
-  //   //   '<'
-  //   // )
-  // })
+  useEffect(() => {
+    const updateMaskSettings = () => {
+      const logo = document.querySelector('.navbar-logo')
+      if (logo) {
+        const rect = logo.getBoundingClientRect()
+        const vw = window.innerWidth
+        const vh = window.innerHeight
+        const x = ((rect.left + rect.width / 2) / vw) * 100
+        const y = ((rect.top + rect.height / 2) / vh) * 100
+        setMaskSettings({
+          initialMaskPos: `${x}% ${y}%`,
+          initialMaskSize: '1800% 1800%',
+          maskPos: `${x}% ${y}%`,
+          maskSize: `${(rect.width / vw) * 100}% ${(rect.height / vh) * 100}%`,
+        })
+      }
+    }
+    updateMaskSettings()
+    window.addEventListener('resize', updateMaskSettings)
+    return () => window.removeEventListener('resize', updateMaskSettings)
+  }, [])
 
   useGSAP(() => {
     gsap.set('.mask-wrapper', {
-      maskPosition: initialMaskPos,
-      maskSize: initialMaskSize,
+      maskPosition: maskSettings.initialMaskPos,
+      maskSize: maskSettings.initialMaskSize,
     })
 
     gsap.set('.mask-logo', { marginTop: '0vh', opacity: 0 })
     gsap.set('.entrance-message', { marginTop: '0vh' })
-    gsap.set('.navbar-logo', { opacity: 0 }) // Ensure NavBar logo starts hidden
+    gsap.set('.navbar-logo', { opacity: 0 })
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -75,21 +55,25 @@ const Hero = () => {
       },
     })
 
-    tl.to('.fade-out', { opacity: 0, ease: 'power1.inOut' })
-      .to('.scale-out', { scale: 1, ease: 'power1.inOut' })
-      .to('.mask-wrapper', { maskSize, ease: 'power1.inOut' }, '<')
-      .to('.mask-wrapper', { maskPosition: maskPos, ease: 'power1.inOut' }, '>')
-      .to('.mask-wrapper', { opacity: 0, duration: 0.5 }, 'logo-transition') // Add a label
+    tl.to('.fade-out', { opacity: 0, ease: 'power1.inOut' }).to('.scale-out', {
+      scale: 1,
+      ease: 'power1.inOut',
+    })
+    tl.to(
+      '.mask-wrapper',
+      { maskSize: maskSettings.maskSize, ease: 'power1.inOut' },
+      '<'
+    )
+      .to('.mask-wrapper', { opacity: 0, duration: 0.5 }, 'logo-transition')
       .to(
         '.navbar-logo',
-        { opacity: 1, duration: 0.5, ease: 'power1.inOut' },
+        { opacity: 1, duration: 0.2, ease: 'power1.inOut' },
         'logo-transition'
-      ) // Use the same label
+      )
   })
 
   return (
     <section className="hero-section relative h-screen w-full overflow-hidden">
-      {/* Background */}
       <div className="size-full mask-wrapper">
         <img
           src="/images/banner-img.jpg"
@@ -98,7 +82,6 @@ const Hero = () => {
         />
 
         {/* Overlay Text */}
-
         <div className="absolute inset-0 flex items-center justify-center">
           <div
             className="mt-30"
