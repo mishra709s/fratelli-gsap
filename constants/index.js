@@ -9,7 +9,7 @@ export const useMaskSettings = () => {
     return {
       initialMaskPos: '50% 43%', // Start closer to the viewport
       initialMaskSize: '3000% 3000%',
-      maskPos: '50% 1%',
+      maskPos: '50% 43%',
       maskSize: '50% 50%',
     }
   }
@@ -18,22 +18,16 @@ export const useMaskSettings = () => {
     return {
       initialMaskPos: '50% 47%',
       initialMaskSize: '3500% 3500%',
-      maskPos: '50% 1%',
+      maskPos: '50% 47%',
       maskSize: '30% 30%',
     }
   }
 
   // Desktop (default)
   return {
-    initialMaskPos: '50% 1%',
+    initialMaskPos: '50% 2%',
     initialMaskSize: '1800% 1800%',
     maskPos: '50% 2%',
-    maskSize: '12% 12%',
+    maskSize: '13% 13%',
   }
-  // return {
-  //   initialMaskPos: '50% 22%',
-  //   initialMaskSize: '3500% 3500%',
-  //   maskPos: '50% 22%',
-  //   maskSize: '20% 20%',
-  // }
 }
