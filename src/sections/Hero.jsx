@@ -106,7 +106,7 @@ const Hero = () => {
               <div className="font-sans text-white text-xl md:text-2xl lg:text-3xl font-light mb-2">
                 Savoured
               </div>
-              <div className="font-playfair italic leading-tight text-white text-6xl md:text-7xl lg:text-8xl">
+              <div className="font-serif italic leading-tight text-white text-6xl md:text-7xl lg:text-8xl">
                 Everywhere
               </div>
             </div>
