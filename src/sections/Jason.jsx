@@ -52,7 +52,7 @@ const Jason = () => {
           They are passages—of story, soil, and soul.
         </p>
 
-        <div className="jason-2">
+        <div className="jason-2 w-full">
           <img src="/images/bottle-2.png" />
         </div>
       </div>
