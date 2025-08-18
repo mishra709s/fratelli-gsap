@@ -7,7 +7,7 @@ const NavBar = () => {
         <a href="http://">Estate</a>
         <a href="http://">Investor</a>
       </div>
-      <img src="/images/fratelli-nav-logo.svg" className="w-[200px]" />
+      <img src="/images/fratelli-logo.svg" className="w-20" />
       {/* <img src="/images/menu.svg" className="w-10" /> */}
       <div className="flex justify-between align-middle text-white uppercase gap-5">
         <a href="http://">Shop</a>
