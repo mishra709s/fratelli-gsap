@@ -5,6 +5,7 @@ import NavBar from './sections/NavBar'
 import Hero from './sections/Hero'
 import FirstVideo from './sections/FirstVideo'
 import Jason from './sections/Jason'
+import SecondVideoSplit from './sections/SecondVideoSplit'
 // import SecondVideo from './sections/SecondVideo'
 // import Lucia from './sections/Lucia'
 // import PostCard from './sections/PostCard'
@@ -24,6 +25,7 @@ const App = () => {
       {/* <ViceCityIntro /> */}
       <FirstVideo />
       <Jason />
+      <SecondVideoSplit />
       {/* 
       <SecondVideo />
       <Lucia /> */}
