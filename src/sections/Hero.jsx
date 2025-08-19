@@ -1,44 +1,43 @@
-import { useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-
-// import { useMaskSettings } from '../../constants'
-// import ComingSoon from './ComingSoon'
+import { useMaskSettings } from '../../constants'
 
 const Hero = () => {
-  const [maskSettings, setMaskSettings] = useState({
-    initialMaskPos: '49.5% 3%',
-    initialMaskSize: '3000% 3000%',
-    maskPos: '49.5% 3%',
-    maskSize: '16% 12%',
-  })
+  // const [maskSettings, setMaskSettings] = useState({
+  // initialMaskPos: '49.5% 3%',
+  // initialMaskSize: '3000% 3000%',
+  // maskPos: '49.5% 3%',
+  // maskSize: '16% 12%',
+  // })
 
-  useEffect(() => {
-    const updateMaskSettings = () => {
-      const logo = document.querySelector('.navbar-logo')
-      if (logo) {
-        const rect = logo.getBoundingClientRect()
-        const vw = window.innerWidth
-        const vh = window.innerHeight
-        const x = ((rect.left + rect.width / 2) / vw) * 100
-        const y = ((rect.top + rect.height / 2) / vh) * 100
-        setMaskSettings({
-          initialMaskPos: `${x}% ${y}%`,
-          initialMaskSize: '1800% 1800%',
-          maskPos: `${x}% ${y}%`,
-          maskSize: `${(rect.width / vw) * 100}% ${(rect.height / vh) * 100}%`,
-        })
-      }
-    }
-    updateMaskSettings()
-    window.addEventListener('resize', updateMaskSettings)
-    return () => window.removeEventListener('resize', updateMaskSettings)
-  }, [])
+  // useEffect(() => {
+  //   const updateMaskSettings = () => {
+  //     const logo = document.querySelector('.navbar-logo')
+  //     if (logo) {
+  //       const rect = logo.getBoundingClientRect()
+  //       const vw = window.innerWidth
+  //       const vh = window.innerHeight
+  //       const x = ((rect.left + rect.width / 2) / vw) * 100
+  //       const y = ((rect.top + rect.height / 2) / vh) * 100
+  //       setMaskSettings({
+  //         initialMaskPos: `${x}% ${y}%`,
+  //         initialMaskSize: '1800% 1800%',
+  //         maskPos: `${x}% ${y}%`,
+  //         maskSize: `${(rect.width / vw) * 100}% ${(rect.height / vh) * 100}%`,
+  //       })
+  //     }
+  //   }
+  //   updateMaskSettings()
+  //   window.addEventListener('resize', updateMaskSettings)
+  //   return () => window.removeEventListener('resize', updateMaskSettings)
+  // }, [])
+
+  const { initialMaskPos, initialMaskSize, maskSize } = useMaskSettings()
 
   useGSAP(() => {
     gsap.set('.mask-wrapper', {
-      maskPosition: maskSettings.initialMaskPos,
-      maskSize: maskSettings.initialMaskSize,
+      maskPosition: initialMaskPos,
+      maskSize: initialMaskSize,
     })
 
     gsap.set('.mask-logo', { marginTop: '0vh', opacity: 0 })
@@ -49,8 +48,8 @@ const Hero = () => {
       scrollTrigger: {
         trigger: '.hero-section',
         start: 'top top',
-        scrub: 2.5,
-        end: '+=200%',
+        scrub: 1,
+        end: '+=70%',
         pin: true,
       },
     })
@@ -59,11 +58,7 @@ const Hero = () => {
       scale: 1,
       ease: 'power1.inOut',
     })
-    tl.to(
-      '.mask-wrapper',
-      { maskSize: maskSettings.maskSize, ease: 'power1.inOut' },
-      '<'
-    )
+    tl.to('.mask-wrapper', { maskSize: maskSize, ease: 'power1.inOut' }, '<')
       .to('.mask-wrapper', { opacity: 0, duration: 0.5 }, 'logo-transition')
       .to(
         '.navbar-logo',

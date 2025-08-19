@@ -25,9 +25,9 @@ export const useMaskSettings = () => {
 
   // Desktop (default)
   return {
-    initialMaskPos: '50% 2%',
-    initialMaskSize: '1800% 1800%',
-    maskPos: '50% 2%',
-    maskSize: '13% 13%',
+    initialMaskPos: '49.5% 3%',
+    initialMaskSize: '2500% 2500%',
+    maskPos: '49.5% 3%',
+    maskSize: '16% 12%',
   }
 }

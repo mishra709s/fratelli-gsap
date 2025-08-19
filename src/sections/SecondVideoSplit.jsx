@@ -109,13 +109,13 @@ const SplitSection = ({ videoSrc, heading, description, reverse = false }) => {
 const SecondVideoSplit = () => (
   <>
     <SplitSection
-      videoSrc="/videos/output_3.mp4"
+      videoSrc="/videos/black-bottle.mp4"
       heading="Heading for this section"
       description="Descriptive content that appears with a delay while the section is pinned and scrolls across a 200% duration. Replace with your actual copy."
       reverse={false}
     />
     <SplitSection
-      videoSrc="/videos/output_3.mp4"
+      videoSrc="/videos/black-bottle.mp4"
       heading="Another Section Heading"
       description="Content on the left, video on the right. GSAP animations work independently for each section."
       reverse={true}
