@@ -62,7 +62,7 @@ const FirstVideo = () => {
           muted
           playsInline
           preload="metadata"
-          src="/videos/rock-bottle.mp4"
+          src="/videos/rock-bottle-new.mp4"
           className="first-vd"
         />
       </div>

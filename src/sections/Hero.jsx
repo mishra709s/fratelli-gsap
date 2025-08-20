@@ -67,13 +67,28 @@ const Hero = () => {
       )
   })
 
+  const videoStyle = {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    display: 'block',
+  }
+
   return (
     <section className="hero-section relative h-screen w-full overflow-hidden">
       <div className="size-full mask-wrapper">
-        <img
+        {/* <img
           src="/images/banner-img.jpg"
           alt="background"
           className="scale-out w-full h-full object-cover"
+        /> */}
+        <video
+          style={videoStyle}
+          // ref={videoRef}
+          src="/videos/banner-video.mp4"
+          muted
+          playsInline
+          preload="metadata"
         />
 
         {/* Overlay Text */}
