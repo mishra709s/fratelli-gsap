@@ -12,15 +12,13 @@ const FirstVideo = () => {
       scrollTrigger: {
         trigger: '.first-vd-wrapper',
         start: 'top top',
-        end: '+=200% top',
-        scrub: 2,
+        end: '+=250% top',
+        scrub: true,
         pin: true,
       },
     })
-    tl.to('.section-02', { delay: 0.5, opacity: 0, ease: 'power1.inOut' })
     tl.to('.first-vd-wrapper', {
       opacity: 1,
-      duration: 2,
       ease: 'power1.inOut',
     })
 
@@ -29,10 +27,9 @@ const FirstVideo = () => {
         videoRef.current,
         {
           currentTime: videoRef.current.duration,
-          duration: 6,
-          ease: 'power1.inOut',
-        },
-        '<'
+          duration: 2.5,
+          ease: "linear"
+        }
       )
     }
 

@@ -17,7 +17,7 @@ const FratelliHero = () => {
         pin: true,
       },
     })
-    tl.to('.section-02', { delay: 0.5, opacity: 0, ease: 'power1.inOut' })
+    // tl.to('.section-02', { delay: 0.5, opacity: 0, ease: 'power1.inOut' })
     tl.to('.first-vd-wrapper', {
       opacity: 1,
       duration: 2,
