@@ -17,11 +17,17 @@
   src: url('/fonts/round-bold.woff');
 }
 
+@font-face {
+  font-family: 'UtileDisplay';
+  src: url('/fonts/UtileDisplay-Regular-TRIAL.ttf');
+}
+
 @theme {
   --font-sans: 'Instrument Sans', sans-serif;
   --font-serif: 'Instrument Serif', serif;
   --font-playfair: 'Playfair', serif;
   --font-long: 'Long', sans-serif;
+  --font-utile: 'UtileDisplay', sans-serif;
   --font-round-bold: 'Round Bold', sans-serif;
   --color-yellow: #fff9cb;
   --color-pink: #ffb0c4;
@@ -45,6 +51,9 @@ body {
 }
 .font-playfair {
   font-family: var(--font-playfair);
+}
+.font-utile {
+  font-family: var(--font-utile);
 }
 
 main {
@@ -131,16 +140,23 @@ main {
       #3d271c 52%
     );
     h1 {
-      @apply font-long uppercase text-8xl mb-20;
+      @apply font-utile uppercase mb-10;
       color: #F4CF80;
+      font-size: 44px;
+      letter-spacing: 0%;
     }
     h2 {
-      @apply md:text-5xl text-3xl mb-7 md:pe-20 pe-10;
+      @apply font-playfair mb-7 md:pe-20 pe-10;
       color: #FFFFF8;
+      font-size: 32px;
+      font-style: italic;
+      letter-spacing: -6%;
     }
     p {
-      @apply md:text-2xl text-lg md:pe-28 pe-14;
+      @apply font-sans md:pe-28 pe-14;
       color: #FFFFF8;
+      font-size: 20px;
+      letter-spacing: -4%;
     }
     .jason-1 {
       @apply bg-yellow lg:h-[80vh] w-auto -translate-x-5;
