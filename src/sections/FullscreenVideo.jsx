@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import LenisProvider from '../setup/LenisProvider.jsx'
 
 const FirstVideo = ({ src, className }) => {
   const sectionRef = useRef(null)
@@ -9,7 +10,6 @@ const FirstVideo = ({ src, className }) => {
   // How long to pin/scrub: 250vh ≈ GSAP end:'+=250%'
   const TRACK_VH = 250
   const STEP = 1 / 30 // 30fps quantization
-
   useEffect(() => {
     const section = sectionRef.current
     const pin = pinRef.current
@@ -149,41 +149,43 @@ const FirstVideo = ({ src, className }) => {
   }, [])
 
   return (
-    <section
-      ref={sectionRef}
-      className={`first-vd-wrapper ${className}`}
-      style={{
-        position: 'relative',
-        height: `${TRACK_VH}vh`,  // scroll distance for scrubbing
-      }}
-    >
-      <div
-        ref={pinRef}
-        className="h-dvh"
+    <LenisProvider>
+      <section
+        ref={sectionRef}
+        className={`first-vd-wrapper ${className}`}
         style={{
-          position: 'absolute',   // JS toggles absolute/fixed for reliable pin
-          top: 0, left: 0, right: 0,
-          height: '100vh',
-          zIndex: 0,
+          position: 'relative',
+          height: `${TRACK_VH}vh`, // scroll distance for scrubbing
         }}
       >
-        {/* Visible canvas */}
-        <canvas
-          ref={canvasRef}
-          className="first-vd"
-          style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }}
-        />
-        {/* Hidden decoder video (no painting jank) */}
-        <video
-          ref={videoRef}
-          src={src}
-          muted
-          playsInline
-          preload="auto"
-          style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
-        />
-      </div>
-    </section>
+        <div
+          ref={pinRef}
+          className="h-dvh"
+          style={{
+            position: 'absolute',   // JS toggles absolute/fixed for reliable pin
+            top: 0, left: 0, right: 0,
+            height: '100vh',
+            zIndex: 0,
+          }}
+        >
+          {/* Visible canvas */}
+          <canvas
+            ref={canvasRef}
+            className="first-vd"
+            style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }}
+          />
+          {/* Hidden decoder video (no painting jank) */}
+          <video
+            ref={videoRef}
+            src={src}
+            muted
+            playsInline
+            preload="auto"
+            style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+          />
+        </div>
+      </section>
+    </LenisProvider>
   )
 }
 
